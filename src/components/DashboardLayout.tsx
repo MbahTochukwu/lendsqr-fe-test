@@ -1,27 +1,50 @@
 import { Outlet, NavLink } from 'react-router-dom';
-import { useState } from 'react'; 
+import { useState, useEffect, useRef } from 'react';
 import './DashboardLayout.scss';
 import '../pages/Users';
-import DashboardCard from '../components/DashboardCard'
+import DashboardCard from '../components/DashboardCard';
 import { useLocation } from 'react-router-dom';
-
 
 export default function DashboardLayout() {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-const showDashboardCards =
-  location.pathname === '/dashboard' || location.pathname === '/dashboard/users';
+
+  const showDashboardCards =
+    location.pathname === '/dashboard' || location.pathname === '/dashboard/users';
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isSidebarOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isSidebarOpen]);
 
   return (
     <div className="dashboard-layout">
-      <aside className="sidebar">
+      {isSidebarOpen && (
+        <div className="sidebar-overlay" onClick={() => setIsSidebarOpen(false)} />
+      )}
+
+      <aside ref={sidebarRef} className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="logo-section">
           <img src="/logo.svg" alt="Lendsqr logo" className="logo" />
         </div>
 
         <nav className="sidebar-nav">
           <div className="switch-org">
-            <img src="/briefcase.svg"  />
+            <img src="/briefcase.svg" />
             <span>Switch Organization </span>
             <img src="/dropup-icon.svg" alt="Dropdown" className="dropdown-icon" />
           </div>
@@ -124,48 +147,52 @@ const showDashboardCards =
       </aside>
 
       <main className="main-content">
-       <header className="topbar">
+        <header className="topbar">
+          <button
+            className="hamburger-btn"
+            onClick={() => setIsSidebarOpen((prev) => !prev)}
+          >
+            <img src="/hamburger-icon.svg" alt="Menu" />
+          </button>
 
-  <div className="search-wrapper">
-  <input type="text" placeholder="Search for anything" />
-  <div className="search-icon">
-    <img src="/search-icon.svg" alt="Search" />
-  </div>
-</div>
+          <div className="search-wrapper">
+            <input type="text" placeholder="Search for anything" />
+            <div className="search-icon">
+              <img src="/search-icon.svg" alt="Search" />
+            </div>
+          </div>
 
-  <div className="topbar-right">
-    <a href="#" className="docs-link">Docs</a>
-    <img src="/bell-icon.svg" alt="Notifications" className="icon" />
-    <div
-  className="user-profile"
-  onClick={() => setShowDropdown((prev) => !prev)}
->
-  <img src="/user-avatar.svg" alt="Profile" className="avatar" />
-  <span className="username">Tochukwu</span>
-  <img src="/dropdown-icon.svg" alt="Dropdown" className="dropdown-icon" />
+          <div className="topbar-right">
+            <a href="#" className="docs-link">Docs</a>
+            <img src="/bell-icon.svg" alt="Notifications" className="icon" />
+            <div
+              className="user-profile"
+              onClick={() => setShowDropdown((prev) => !prev)}
+            >
+              <img src="/user-avatar.svg" alt="Profile" className="avatar" />
+              <span className="username">Tochukwu</span>
+              <img src="/dropdown-icon.svg" alt="Dropdown" className="dropdown-icon" />
 
-  {showDropdown && (
-    <div className="dropdown-menu">
-      <div className="dropdown-item">Profile</div>
-      <div className="dropdown-item">Settings</div>
-      <div className="dropdown-item">Switch Organization</div>
-      <div className="dropdown-item">Logout</div>
-    </div>
-  )}
-</div>
+              {showDropdown && (
+                <div className="dropdown-menu">
+                  <div className="dropdown-item">Profile</div>
+                  <div className="dropdown-item">Settings</div>
+                  <div className="dropdown-item">Switch Organization</div>
+                  <div className="dropdown-item">Logout</div>
+                </div>
+              )}
+            </div>
+          </div>
+        </header>
 
-  </div>
-</header>
-
-{showDashboardCards && (
-  <div className="dashboard-cards">
-    <DashboardCard icon="/users-icon.svg" title=" New Users" value="2,453" />
-    <DashboardCard icon="/active-users-icon.svg" title="New Active Users" value="1,453" />
-    <DashboardCard icon="/loans-icon.svg" title="New Users with Loans" value="12,453" />
-    <DashboardCard icon="/savings-icon.svg" title="New Users with Savings" value="₦4,453,000" />
-  </div>
-)}
-
+        {showDashboardCards && (
+          <div className="dashboard-cards">
+            <DashboardCard icon="/users-icon.svg" title=" New Users" value="2,453" />
+            <DashboardCard icon="/active-users-icon.svg" title="New Active Users" value="1,453" />
+            <DashboardCard icon="/loans-icon.svg" title="New Users with Loans" value="12,453" />
+            <DashboardCard icon="/savings-icon.svg" title="New Users with Savings" value="₦4,453,000" />
+          </div>
+        )}
 
         <section className="page-content">
           <Outlet />
