@@ -202,7 +202,7 @@ export default function UserDetails() {
       <ul>
         {user.documents.map((doc, index) => (
           <li key={index}>
-            {doc.submitted ? '✅' : '❌'} {doc.name}
+            {doc.submitted ? '' : ''} {doc.name}
           </li>
         ))}
       </ul>

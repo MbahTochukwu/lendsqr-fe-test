@@ -5,26 +5,31 @@ import './Login.scss';
 
 export default function Login() {
   const [email, setEmail] = useState('');
-  const [password,] = useState('');
+  const [password,setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!email || !password) {
-      setError('Email and password are required.');
-      return;
-    }
+  setError('');
 
-    // Fake login logic
-    if (email === 'admin@lendsqr.com' && password === 'admin123') {
-      navigate('/dashboard');
-    } else {
-      setError('Invalid credentials');
-    }
-  };
+  if (!email.trim() || !password.trim()) {
+    setError('Please enter both email and password.');
+    return;
+  }
+
+  const validEmail = 'admin@lendsqr.com';
+  const validPassword = 'admin123';
+
+  if (email === validEmail && password === validPassword) {
+    localStorage.setItem('isLoggedIn', 'true');
+    navigate('/dashboard');
+  } else {
+    setError('Invalid email or password. Try again.');
+  }
+};
 
   return (
     <div className="login-container">
@@ -57,6 +62,8 @@ export default function Login() {
   <input
     type={showPassword ? 'text' : 'password'}
     placeholder="Password"
+    value={password}
+  onChange={(e) => setPassword(e.target.value)}
     className="password-input"
   />
   <button

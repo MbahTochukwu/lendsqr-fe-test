@@ -7,7 +7,6 @@ import Settings from './pages/Settings';
 import DashboardLayout from './components/DashboardLayout';
 import UserDetails from './pages/UserDetails';
 
-
 function App() {
   return (
     <BrowserRouter>

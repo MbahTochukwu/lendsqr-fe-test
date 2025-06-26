@@ -6,8 +6,6 @@ import DashboardCard from '../components/DashboardCard'
 import { useLocation } from 'react-router-dom';
 
 
-
-
 export default function DashboardLayout() {
   const [showDropdown, setShowDropdown] = useState(false);
   const location = useLocation();
@@ -135,7 +133,6 @@ const showDashboardCards =
   </div>
 </div>
 
-
   <div className="topbar-right">
     <a href="#" className="docs-link">Docs</a>
     <img src="/bell-icon.svg" alt="Notifications" className="icon" />
@@ -156,7 +153,6 @@ const showDashboardCards =
     </div>
   )}
 </div>
-
 
   </div>
 </header>

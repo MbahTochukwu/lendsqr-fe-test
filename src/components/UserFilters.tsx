@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './UserFilters.scss';
 
-
 interface Props {
   columnKey: string;
   filters: {
