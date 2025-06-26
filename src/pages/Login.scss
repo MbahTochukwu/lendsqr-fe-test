@@ -121,3 +121,42 @@
     font-weight: bold;
   }
 }
+
+.login-container{
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+    background: none;
+    border: none;
+    margin-right: 1rem;
+  }
+}
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.login-left,
+.login-right {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-left {
+    order: 2;
+    width: 100%;
+    text-align: center;
+  }
+
+  .login-right {
+    order: 1;
+    width: 100%;
+    padding: 2rem;
+  }
+}
