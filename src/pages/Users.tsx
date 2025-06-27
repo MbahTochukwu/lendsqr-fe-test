@@ -63,7 +63,7 @@ export default function Users() {
 
   return (
     <div className="users-page">
-      <h2></h2>
+      <h2>Users</h2>
       <table className="users-table">
         <thead>
           <tr>
@@ -71,7 +71,7 @@ export default function Users() {
               <th key={key} style={{ position: 'relative', zIndex: 10 }}>
                 <div onClick={() => setActiveFilter(key)} style={{ cursor: 'pointer' }}>
                   {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}
-                  <img src="/filter-icon.svg" alt="filter" />
+                  <img src="/filter-icon" alt="filter" />
                 </div>
                 {activeFilter === key && (
                   <UserFilters
@@ -133,6 +133,43 @@ export default function Users() {
         </tbody>
       </table>
 
+      <div className="users-list-mobile">
+  {filteredUsers
+    .slice((currentPage - 1) * usersPerPage, currentPage * usersPerPage)
+    .map((user) => (
+      <div className="user-card" key={user.id} style={{
+        background: "#fff",
+        borderRadius: "8px",
+        boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
+        padding: "16px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "8px"
+      }}>
+        <div><strong>Organization:</strong> {filters.organization || 'Lendsqr'}</div>
+        <div><strong>Username:</strong> {user.name}</div>
+        <div><strong>Email:</strong> {user.email}</div>
+        <div><strong>Phone:</strong> {user.phone}</div>
+        <div><strong>Date Joined:</strong> {user.dateJoined}</div>
+        <div>
+          <strong>Status:</strong>
+          <span className={`status ${user.status.toLowerCase()}`} style={{ marginLeft: 8 }}>
+            {user.status}
+          </span>
+        </div>
+        <div style={{ marginTop: 8 }}>
+          <button
+            className="action-btn"
+            onClick={() => navigate(`/dashboard/users/${user.id}`)}
+            style={{ padding: "6px 12px", borderRadius: "4px", background: "#39cdcc", color: "#fff", border: "none" }}
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+    ))}
+</div>
+
       <div
         className="pagination-container"
         style={{
@@ -155,7 +192,7 @@ export default function Users() {
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            style={{ padding: '5px 10px', cursor: 'pointer' }}
+            style={{ padding: '5px 10px', cursor: 'pointer',color:'#213f7d'}}
           >
             Prev
           </button>
@@ -211,43 +248,6 @@ export default function Users() {
 })()}
 
         </div>
-      </div>
-
-      <div className="users-list-mobile">
-        {filteredUsers
-          .slice((currentPage - 1) * usersPerPage, currentPage * usersPerPage)
-          .map((user) => (
-            <div className="user-card" key={user.id} style={{
-              background: "#fff",
-              borderRadius: "8px",
-              boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
-              padding: "16px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px"
-            }}>
-              <div><strong>Organization:</strong> {filters.organization || 'Lendsqr'}</div>
-              <div><strong>Username:</strong> {user.name}</div>
-              <div><strong>Email:</strong> {user.email}</div>
-              <div><strong>Phone:</strong> {user.phone}</div>
-              <div><strong>Date Joined:</strong> {user.dateJoined}</div>
-              <div>
-                <strong>Status:</strong>
-                <span className={`status ${user.status.toLowerCase()}`} style={{ marginLeft: 8 }}>
-                  {user.status}
-                </span>
-              </div>
-              <div style={{ marginTop: 8 }}>
-                <button
-                  className="action-btn"
-                  onClick={() => navigate(`/dashboard/users/${user.id}`)}
-                  style={{ padding: "6px 12px", borderRadius: "4px", background: "#39cdcc", color: "#fff", border: "none" }}
-                >
-                  View Details
-                </button>
-              </div>
-            </div>
-          ))}
       </div>
     </div>
   );

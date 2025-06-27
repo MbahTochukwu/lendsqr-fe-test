@@ -13,14 +13,17 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
   }
 
   .login-left {
     background: #fff;
     align-items: center;
-    padding: 40px 24px;
+    padding: 40px 24px 20px 24px;
     min-width: 320px;
+    justify-content: flex-start;
 
     .brand {
       text-align: center;
@@ -48,10 +51,12 @@
 
   .login-right {
     background: #f9f9f9;
-    padding: 40px 32px;
+    padding: 40px 32px 20px 32px;
     max-width: 420px;
     margin: auto;
     box-shadow: 0 0 24px rgba(0,0,0,0.04);
+    justify-content: flex-start;
+    min-height: 100vh;
 
     h2 {
       font-size: 2rem;
@@ -125,9 +130,10 @@
       .illustration {
         max-width: 250px;
       }
+      padding: 32px 12px 12px 12px;
     }
     .login-right {
-      padding: 32px 12px;
+      padding: 32px 12px 12px 12px;
     }
   }
 
@@ -139,7 +145,8 @@
       width: 100%;
       min-width: unset;
       box-shadow: none;
-      padding: 32px 12px;
+      padding: 24px 8px 8px 8px;
+      min-height: unset;
     }
     .login-left {
       align-items: center;
@@ -152,6 +159,7 @@
       padding-top: 0;
       max-width: 100%;
       box-shadow: none;
+      min-height: unset;
 
       form {
         gap: 12px;
@@ -169,7 +177,7 @@
 
   @media (max-width: 480px) {
     .login-right {
-      padding: 18px 4vw;
+      padding: 12px 2vw 4px 2vw;
       form {
         gap: 8px;
         input, .password-input {
@@ -183,7 +191,7 @@
       }
     }
     .login-left {
-      padding: 18px 4vw;
+      padding: 12px 2vw 4px 2vw;
       .illustration {
         max-width: 120px;
       }
