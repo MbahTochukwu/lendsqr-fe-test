@@ -1,6 +1,5 @@
 .users-page {
   padding: 1rem;
-  padding-bottom: 0 !important;
 
   h2 {
     margin-bottom: 1.5rem;
@@ -201,8 +200,6 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
   color: #545F7D;
 }
 
@@ -398,7 +395,7 @@
     }
   }
 
-  /* MOBILE STYLES */
+  
   .users-list-mobile {
     display: none;
   }
