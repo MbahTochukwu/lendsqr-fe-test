@@ -212,6 +212,43 @@ export default function Users() {
 
         </div>
       </div>
+
+      <div className="users-list-mobile">
+        {filteredUsers
+          .slice((currentPage - 1) * usersPerPage, currentPage * usersPerPage)
+          .map((user) => (
+            <div className="user-card" key={user.id} style={{
+              background: "#fff",
+              borderRadius: "8px",
+              boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
+              padding: "16px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "8px"
+            }}>
+              <div><strong>Organization:</strong> {filters.organization || 'Lendsqr'}</div>
+              <div><strong>Username:</strong> {user.name}</div>
+              <div><strong>Email:</strong> {user.email}</div>
+              <div><strong>Phone:</strong> {user.phone}</div>
+              <div><strong>Date Joined:</strong> {user.dateJoined}</div>
+              <div>
+                <strong>Status:</strong>
+                <span className={`status ${user.status.toLowerCase()}`} style={{ marginLeft: 8 }}>
+                  {user.status}
+                </span>
+              </div>
+              <div style={{ marginTop: 8 }}>
+                <button
+                  className="action-btn"
+                  onClick={() => navigate(`/dashboard/users/${user.id}`)}
+                  style={{ padding: "6px 12px", borderRadius: "4px", background: "#39cdcc", color: "#fff", border: "none" }}
+                >
+                  View Details
+                </button>
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }

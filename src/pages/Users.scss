@@ -1,5 +1,6 @@
 .users-page {
   padding: 1rem;
+  padding-bottom: 0 !important;
 
   h2 {
     margin-bottom: 1.5rem;
@@ -200,6 +201,8 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
   color: #545F7D;
 }
 
@@ -270,4 +273,206 @@
 
 .dropdown-cell {
   position: relative;
+}
+
+@media (max-width: 700px) {
+  .users-table {
+    display: none;
+  }
+  .users-list-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+@media (min-width: 701px) {
+  .users-list-mobile {
+    display: none;
+  }
+}
+
+.users-page {
+  padding: 24px;
+
+  .users-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+
+    th, td {
+      padding: 14px 10px;
+      text-align: left;
+      font-size: 15px;
+      border-bottom: 1px solid #f0f0f0;
+      white-space: nowrap;
+    }
+
+    th {
+      background: #f9f9f9;
+      font-weight: 600;
+      color: #213f7d;
+      position: relative;
+      z-index: 1;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .status {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      &.active { background: #e6f9f8; color: #39cdcc; }
+      &.inactive { background: #f9e6e6; color: #d23434; }
+      &.pending { background: #fffbe6; color: #e9b200; }
+      &.blacklisted { background: #fbeaea; color: #d23434; }
+    }
+
+    .action-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #213f7d;
+      padding: 0 8px;
+    }
+
+    .action-dropdown {
+      position: absolute;
+      right: 0;
+      top: 30px;
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      min-width: 150px;
+      z-index: 20;
+      div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        font-size: 14px;
+        color: #213f7d;
+        cursor: pointer;
+        transition: background 0.2s;
+        &:hover {
+          background: #f3f6f9;
+        }
+        .action-icon {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+
+  .pagination-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .pagination-controls button {
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      &.active {
+        background: #007bff;
+        color: #fff;
+      }
+    }
+  }
+
+  /* MOBILE STYLES */
+  .users-list-mobile {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    padding: 10px;
+
+    .users-table {
+      display: none;
+    }
+
+    .users-list-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      color:#504388;
+      .user-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 15px;
+
+        div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          word-break: break-word;
+        }
+
+        strong {
+          color: #213f7d;
+          min-width: 110px;
+        }
+
+        .status {
+          padding: 4px 10px;
+          border-radius: 12px;
+          font-size: 13px;
+          font-weight: 500;
+          &.active { background: #e6f9f8; color: #39cdcc; }
+          &.inactive { background: #f9e6e6; color: #d23434; }
+          &.pending { background: #fffbe6; color: #e9b200; }
+          &.blacklisted { background: #fbeaea; color: #d23434; }
+        }
+
+        .action-btn {
+          margin-top: 8px;
+          background: #39cdcc;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          padding: 7px 14px;
+          font-size: 15px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: background 0.2s;
+          &:hover {
+            background: #2bb8b7;
+          }
+        }
+      }
+    }
+
+    .pagination-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      .pagination-controls {
+        flex-wrap: wrap;
+      }
+    }
+  }
 }
