@@ -63,7 +63,7 @@ export default function Users() {
 
   return (
     <div className="users-page">
-      <h2>Users</h2>
+      
       <table className="users-table">
         <thead>
           <tr>
@@ -71,7 +71,7 @@ export default function Users() {
               <th key={key} style={{ position: 'relative', zIndex: 10 }}>
                 <div onClick={() => setActiveFilter(key)} style={{ cursor: 'pointer' }}>
                   {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}
-                  <img src="/filter-icon" alt="filter" />
+                  <img src="/filter-icon.svg" alt="filter" />
                 </div>
                 {activeFilter === key && (
                   <UserFilters
