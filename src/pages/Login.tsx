@@ -75,8 +75,7 @@ export default function Login() {
       top: '50%',
       transform: 'translateY(-50%)',
       background: 'none',
-      border: 'none',
-      color: '#545F7D',
+      outline: 'none',
       cursor: 'pointer',
     }}
   >
@@ -87,7 +86,7 @@ export default function Login() {
 
           <div className="form-options">
            
-            <a href="#">Forgot Password?</a>
+            <a href="#">FORGOT PASSWORD?</a>
           </div>
           <button type="submit">Log In</button>
         </form>

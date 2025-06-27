@@ -44,3 +44,8 @@
     gap: 1.2rem;
   }
 }
+
+.dashboard-card {
+  min-width: 250px;
+  flex: 1 1 calc(100% - 2rem);
+}

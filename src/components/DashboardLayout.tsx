@@ -190,7 +190,7 @@ export default function DashboardLayout() {
             <DashboardCard icon="/users-icon.svg" title=" New Users" value="2,453" />
             <DashboardCard icon="/active-users-icon.svg" title="New Active Users" value="1,453" />
             <DashboardCard icon="/loans-icon.svg" title="New Users with Loans" value="12,453" />
-            <DashboardCard icon="/savings-icon.svg" title="New Users with Savings" value="₦4,453,000" />
+            <DashboardCard icon="/savings-icon.svg" title="New Users with Savings" value="253,080" />
           </div>
         )}
 

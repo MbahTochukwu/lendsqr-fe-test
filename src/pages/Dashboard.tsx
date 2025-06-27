@@ -16,8 +16,8 @@ export default function Dashboard() {
         />
         <DashboardCard 
           icon="/savings-icon.svg" 
-          title="Old Savings" 
-          value="₦12,000,000" 
+          title="Old Users with Savings" 
+          value="102,004" 
         />
       </div>
     </div>

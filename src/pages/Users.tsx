@@ -63,7 +63,7 @@ export default function Users() {
 
   return (
     <div className="users-page">
-      <h2>Users</h2>
+      <h2></h2>
       <table className="users-table">
         <thead>
           <tr>

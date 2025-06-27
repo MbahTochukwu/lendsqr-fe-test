@@ -85,7 +85,7 @@ export default function UserDetails() {
       </button>
 
       <div className="top-header-row">
-        <h2>User Details</h2>
+        
         <div className="user-actions">
           <button
             className="blacklist-btn"
