@@ -15,7 +15,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 100vh;
   }
 
   .login-left {
@@ -137,64 +136,27 @@
     }
   }
 
-  @media (max-width: 700px) {
+}
+
+@media (max-width: 700px) {
+  .login-container {
+    min-height: unset;
+    height: auto;
+    max-height: 100vh;
+    overflow-y:scroll;
+    align-items: flex-start;
+    padding-bottom: 0px; 
     flex-direction: column;
-
-    .login-left, .login-right {
-      max-width: 100%;
-      width: 100%;
-      min-width: unset;
-      box-shadow: none;
-      padding: 24px 8px 8px 8px;
-      min-height: unset;
-    }
-    .login-left {
-      align-items: center;
-      .illustration {
-        max-width: 180px;
-      }
-    }
-    .login-right {
-      margin: 0;
-      padding-top: 0;
-      max-width: 100%;
-      box-shadow: none;
-      min-height: unset;
-
-      form {
-        gap: 12px;
-        input, .password-input {
-          padding: 10px;
-          font-size: 15px;
-        }
-        button[type="submit"] {
-          padding: 10px;
-          font-size: 15px;
-        }
-      }
-    }
   }
-
-  @media (max-width: 480px) {
-    .login-right {
-      padding: 12px 2vw 4px 2vw;
-      form {
-        gap: 8px;
-        input, .password-input {
-          padding: 8px;
-          font-size: 14px;
-        }
-        button[type="submit"] {
-          padding: 9px;
-          font-size: 14px;
-        }
-      }
-    }
-    .login-left {
-      padding: 12px 2vw 4px 2vw;
-      .illustration {
-        max-width: 120px;
-      }
-    }
+  .login-left, .login-right {
+    min-height: unset;
+    height: auto;
+    justify-content: flex-start;
+    padding-bottom: 0;
+  }
+  .login-right {
+    margin: 0;
+    box-shadow: none;
+    padding-bottom: 0;
   }
 }

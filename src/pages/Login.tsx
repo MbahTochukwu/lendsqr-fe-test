@@ -88,7 +88,7 @@ export default function Login() {
            
             <a href="#">FORGOT PASSWORD?</a>
           </div>
-          <button type="submit">Log In</button>
+        <div>  <button type="submit">Log In</button></div>
         </form>
       </div>
     </div>
